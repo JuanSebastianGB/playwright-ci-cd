@@ -25,7 +25,7 @@ jobs:
           node-version: 18
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpx playwright install chromium
+      - run: pnpx playwright install
       - run: pnpm run ci
         env:
           TURN_TOKEN: ${{ secrets.TURN_TOKEN }}
