@@ -19,7 +19,9 @@ jobs:
           cache: 'pnpm'
       # - run: pnpm install --prefer-offline --frozen-lockfile
       - run: pnpx playwright install chromium
-      - run: pnpm run ci
+      - run: pnpm build
+      - run: pnpm e2e:test
+      - run: pnpm lint
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
