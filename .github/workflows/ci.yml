@@ -35,6 +35,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Install playwright
+        run: pnpx playwright install chromium
+
       - name: Build
         run: pnpm build
 
