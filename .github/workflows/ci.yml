@@ -39,4 +39,4 @@ jobs:
         run: pnpm build
 
       - name: Test
-        run: pnpm e2e:test
+        run: pnpm run ci
