@@ -107,15 +107,6 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/tests:
-    devDependencies:
-      '@playwright/test':
-        specifier: ^1.40.0
-        version: 1.40.0
-      '@types/node':
-        specifier: ^20.9.2
-        version: 20.9.2
-
   packages/tsconfig: {}
 
   packages/ui:
@@ -157,6 +148,9 @@ importers:
       '@types/node':
         specifier: ^20.9.2
         version: 20.9.2
+      web:
+        specifier: workspace:*
+        version: link:../../apps/web
 
 packages:
 
