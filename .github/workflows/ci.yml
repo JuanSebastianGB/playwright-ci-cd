@@ -18,6 +18,7 @@ jobs:
         with:
           cache: 'pnpm'
       # - run: pnpm install --prefer-offline --frozen-lockfile
+      - run: npm install -g @turbo/cli
       - run: pnpx playwright install chromium
       - run: pnpm build
       - run: pnpm e2e:test
