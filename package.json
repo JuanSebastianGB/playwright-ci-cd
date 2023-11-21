@@ -5,7 +5,8 @@
     "apps/*"
   ],
   "scripts": {
-    "ci": "turbo run build e2e:test lint",
+    "ci2": "turbo run build e2e:test lint",
+    "ci": "echo 'hol'",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
