@@ -21,7 +21,9 @@ export default function Page(): JSX.Element {
 
   const copyLastTodo = () => {
     const lastTodo = todos[todos.length - 1];
+    //@ts-expect-error todo
     const newTodo = { ...lastTodo, id: lastTodo.id + 1 };
+    //@ts-expect-error todo
     setTodos([...todos, newTodo]);
   };
   return (
