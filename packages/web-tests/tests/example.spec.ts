@@ -19,20 +19,32 @@ test('get started link', async ({ page }) => {
   ).toBeVisible();
 });
 
-test('testing external web page', async ({ page }) => {
+test('Todo, should have an add todo and a remove todo ', async ({ page }) => {
   await page.goto('http://localhost:3000/');
-  const buttonText = page.getByRole('button', { name: 'click me' });
-  expect(await buttonText.innerText()).toBe('click me');
+  const buttonAdd = page.getByRole('button', { name: 'add todo' });
+  expect(await buttonAdd.innerText()).toBe('add todo');
+
+  const buttonRemove = page.getByRole('button', { name: 'remove todo' });
+  expect(await buttonRemove.innerText()).toBe('remove todo');
 });
 
-test('testing the list functionality', async ({ page }) => {
+test('Todo, should add and remove todos accordantly', async ({ page }) => {
   await page.goto('http://localhost:3000/');
   const list = page.locator('data-testid=list-container');
 
   expect(await list.locator('div').count()).toBe(3);
 
-  const button = page.getByRole('button', { name: 'click me' });
-  await button.click();
+  const buttonAdd = page.getByRole('button', { name: 'add todo' });
+  const buttonRemove = page.getByRole('button', { name: 'remove todo' });
+
+  await buttonAdd.click();
+  await buttonAdd.click();
+  await buttonAdd.click();
+
+  expect(await list.locator('div').count()).toBe(6);
+
+  await buttonRemove.click();
+  await buttonRemove.click();
 
   expect(await list.locator('div').count()).toBe(4);
 });

@@ -26,6 +26,14 @@ export default function Page(): JSX.Element {
     //@ts-expect-error todo
     setTodos([...todos, newTodo]);
   };
+
+  const deleteLastTodo = () => {
+    const lastTodo = todos[todos.length - 1];
+    //@ts-expect-error todo
+    const newTodo = { ...lastTodo, id: lastTodo.id + 1 };
+    //@ts-expect-error todo
+    setTodos([...todos, newTodo]);
+  };
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -33,8 +41,8 @@ export default function Page(): JSX.Element {
           examples/basic&nbsp;
           <code className={styles.code}>web</code>
         </p>
-        <Button content="click me" onClick={copyLastTodo} />
-        {/* show me how to add data test id to the next div */}
+        <Button content="add todo" onClick={copyLastTodo} />
+        <Button content="remove todo" onClick={deleteLastTodo} />
 
         <div role="list" data-testid="list-container">
           {todos.map((todo) => {
