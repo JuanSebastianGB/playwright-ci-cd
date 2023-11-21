@@ -18,3 +18,16 @@ test('get started link', async ({ page }) => {
     page.getByRole('heading', { name: 'Installation' })
   ).toBeVisible();
 });
+
+test('testing external web page', async ({ page }) => {
+  await page.goto('about:blank');
+  await page.goto('http://localhost:3000/');
+  await page.getByText('examples/basic web').click();
+  const page1Promise = page.waitForEvent('popup');
+  await page.getByRole('link', { name: 'Docs -> Find in-depth' }).click();
+  const page1 = await page1Promise;
+  const turboLink = page1.getByRole('link', { name: 'Turborepo', exact: true });
+
+  expect(turboLink).toBeVisible();
+  await page1.getByRole('link', { name: 'Turborepo', exact: true }).click();
+});
