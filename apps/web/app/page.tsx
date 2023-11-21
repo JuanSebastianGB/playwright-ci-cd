@@ -28,11 +28,9 @@ export default function Page(): JSX.Element {
   };
 
   const deleteLastTodo = () => {
-    const lastTodo = todos[todos.length - 1];
-    //@ts-expect-error todo
-    const newTodo = { ...lastTodo, id: lastTodo.id + 1 };
-    //@ts-expect-error todo
-    setTodos([...todos, newTodo]);
+    const newTodos = [...todos].slice(0, -1);
+
+    setTodos([...newTodos]);
   };
   return (
     <main className={styles.main}>
