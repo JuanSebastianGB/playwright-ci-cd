@@ -26,6 +26,7 @@ test('Todo, should add and remove todos accordantly', async ({ page }) => {
 
   await buttonRemove.click();
   await buttonRemove.click();
+  await buttonRemove.click();
 
-  expect(await list.locator('div').count()).toBe(4);
+  expect(await list.locator('div').count()).toBe(3);
 });
