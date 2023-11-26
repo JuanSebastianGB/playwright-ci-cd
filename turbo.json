@@ -3,10 +3,10 @@
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "build": {
+      "cache": true,
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
-    "lint": {},
     "dev": {
       "cache": false,
       "persistent": true
@@ -16,6 +16,12 @@
     },
     "e2e:test": {
       "dependsOn": ["^build"]
+    },
+    "lint": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "persistent": false
     },
     "start": {
       "cache": true,
